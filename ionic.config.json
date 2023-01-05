@@ -1,0 +1,7 @@
+{
+  "name": "myanimelist",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
