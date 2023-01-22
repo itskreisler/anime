@@ -7,7 +7,7 @@ import {
 import { IonReactHashRouter as IonRouter } from '@ionic/react-router'
 
 import Menu from './components/Menu'
-import tagAppPages from './pages/TagAppPages'
+import TagAppPages from './pages/TagAppPages'
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css'
@@ -37,7 +37,7 @@ const App: React.FC = () => {
         <IonSplitPane contentId="main">
           <Menu />
           <IonRouterOutlet id="main">
-            {tagAppPages()}
+            <TagAppPages />
           </IonRouterOutlet>
         </IonSplitPane>
       </IonRouter>

@@ -61,7 +61,7 @@ const PageInicio = () => {
                       disabled={isSearch}
                       required={!0}
                       {...register('q', { required: true })}
-                      onIonChange={({ target: { value } }) => setQuery(value)}
+                      onIonChange={({ target: { value } }) => { setQuery(value); setInfo([]) }}
                       clearInput
                     ></IonInput>
                   </IonItem>

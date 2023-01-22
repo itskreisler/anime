@@ -12,7 +12,7 @@ const TagResultSearch = ({ data: { title, synopsis, images: { webp } } }) => {
     <IonCardContent>
       <IonItem button detail={!0} /* routerLink='/config' */>
         <IonThumbnail slot="start">
-          <IonImg src={webp.small_image_url}></IonImg>
+          <IonImg {...{ title }} src={webp.small_image_url}></IonImg>
         </IonThumbnail>
         <IonLabel>
           <h3>{title}</h3>
