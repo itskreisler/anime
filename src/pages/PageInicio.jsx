@@ -16,14 +16,13 @@ import { useHookForm } from '../hooks/use-hook-form'
 import { useState } from 'react'
 import { getAnimeSearch } from '../services/getAnimeSearch'
 import TagResultSearch from '../components/TagResultSearch'
+import { useLocalStorage } from '../hooks/use-local-storage'
 
 const PageInicio = () => {
-  const { register, handleSubmit, watch } = useHookForm({
-    defaultValues: { q: 'bocchi' }
-  })
+  const { register, handleSubmit, watch } = useHookForm()
   const [isSearch, setIsSearch] = useState(!1)
-  const [info, setInfo] = useState([])
-  const [query, setQuery] = useState(watch('q'))
+  const [info, setInfo] = useLocalStorage('PageInicio:info', [])
+  const [query, setQuery] = useState('')
   const formAnime = async (data) => {
     setIsSearch(!0)
     try {

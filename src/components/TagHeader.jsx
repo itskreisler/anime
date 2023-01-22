@@ -18,7 +18,7 @@ export const TagHeaderWithMenuBtn = ({ title = 'placeholder' }) => {
         <IonButtons slot="start">
           <IonMenuButton />
         </IonButtons>
-        <IonTitle>{title}</IonTitle>
+        <IonTitle size="large">{title}</IonTitle>
       </IonToolbar>
     </IonHeader>
   )

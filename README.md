@@ -1,10 +1,10 @@
-# Yo
+# Anime
 
-Catalago de ti mismo...
+En desarrollo...
 
 ## Installation
 
-Use el administrador de paquetes [node](https://nodejs.org/es/) para instalar [Yo](https://github.com/itskreisler/yo).
+Use el administrador de paquetes [node](https://nodejs.org/es/) para instalar [Yo](https://github.com/itskreisler/anime).
 
 ```bash
 npm install
@@ -40,7 +40,7 @@ npm run build-resources
 ```
 
 ## Contribuye
-Las [solicitudes de extracción](https://github.com/itskreisler/yo/pulls) son bienvenidas. Para cambios importantes, primero abra un [problema](https://github.com/itskreisler/yo/issues) para discutir lo que le gustaría cambiar.
+Las [solicitudes de extracción](https://github.com/itskreisler/anime/pulls) son bienvenidas. Para cambios importantes, primero abra un [problema](https://github.com/itskreisler/anime/issues) para discutir lo que le gustaría cambiar.
 
 Asegúrese de actualizar las pruebas según corresponda.
 

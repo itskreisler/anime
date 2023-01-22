@@ -6,12 +6,14 @@ import {
 } from 'ionicons/icons'
 import React, { Suspense, lazy } from 'react'
 import { Route } from 'react-router-dom'
+import TagLayout from '../components/TagLayout'
+import TagSpinner from '../components/TagSpinner'
 
 const pathTitle = ([path, title]) => ({ path, title })
 export const PATHS = {
-  URL_DEFAULT: pathTitle(['/', 'Inicio']),
-  URL_PAGE: pathTitle(['/page', 'Pages']),
-  URL_PAGE_NAME: pathTitle(['/page/:name', 'Page']),
+  URL_DEFAULT: pathTitle(['/', 'Buscar Anime']),
+  URL_PAGE: pathTitle(['/calendar', 'Calendario']),
+  URL_PAGE_NAME: pathTitle(['/anime-search/:id', 'Anime']),
   URL_CONFIG: pathTitle(['/config', 'Configuracion'])
 }
 export const appPages = [
@@ -46,14 +48,15 @@ export const appPages = [
 ]
 const TagAppPages = () => {
   return (
-    <Suspense fallback={<h1>Loading...</h1>}>
+    <Suspense
+      fallback={
+        <TagLayout>
+          <TagSpinner />
+        </TagLayout>
+      }
+    >
       {appPages.map(({ url, Component }, index) => (
-        <Route
-          key={index}
-          path={url}
-          exact={true}
-          children={<Component />}
-        />
+        <Route key={index} path={url} exact={true} children={<Component />} />
       ))}
     </Suspense>
   )

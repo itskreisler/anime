@@ -1,0 +1,207 @@
+$offset: 187;
+$duration: 1.4s;
+// Esto es solo para centrar la ruleta
+
+//html, body { height: 100%; }
+//
+//body {
+//  display: flex;
+//  align-items: center;
+//  justify-content: center;
+//}
+body.dark-mode {
+  .preloader-page {
+    background: #121212;
+  }
+}
+.preloader-page {
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  position: fixed;
+  z-index: 99999;
+  background: #fff;
+  transition: all 1s ease;
+  .preloader-close {
+    position: absolute;
+    z-index: 10;
+    right: 0;
+    top: 0;
+    bottom: calc(100vh - 65px);
+    left: calc(100vw - 65px);
+    border-radius: 10px;
+    /* background: rgba(0, 0, 0, 0.5); */
+    color: black;
+    cursor: pointer;
+    text-align: center;
+    font-size: 40px;
+  }
+}
+.spinner {
+  -webkit-animation: rotator $duration linear infinite;
+  animation: rotator $duration linear infinite;
+  &.sm {
+    width: 1rem;
+    height: 1rem;
+  }
+  &.md {
+    width: 2rem;
+    height: 2rem;
+  }
+  &.lg {
+    width: 3rem;
+    height: 3rem;
+  }
+  &.xl {
+    width: 4rem;
+    height: 4rem;
+  }
+}
+
+@-webkit-keyframes rotator {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(270deg);
+    transform: rotate(270deg);
+  }
+}
+
+@keyframes rotator {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(270deg);
+    transform: rotate(270deg);
+  }
+}
+.path {
+  stroke-dasharray: 187;
+  stroke-dashoffset: 0;
+  -webkit-transform-origin: center;
+  transform-origin: center;
+  -webkit-animation: dash $duration ease-in-out infinite,
+    colors ($duration * 4) ease-in-out infinite;
+  animation: dash $duration ease-in-out infinite,
+    colors ($duration * 4) ease-in-out infinite;
+}
+
+@-webkit-keyframes colors {
+  0% {
+    stroke: #4285f4;
+  }
+  25% {
+    stroke: #de3e35;
+  }
+  50% {
+    stroke: #f7c223;
+  }
+  75% {
+    stroke: #1b9a59;
+  }
+  100% {
+    stroke: #4285f4;
+  }
+}
+
+@keyframes colors {
+  0% {
+    stroke: #4285f4;
+  }
+  25% {
+    stroke: #de3e35;
+  }
+  50% {
+    stroke: #f7c223;
+  }
+  75% {
+    stroke: #1b9a59;
+  }
+  100% {
+    stroke: #4285f4;
+  }
+}
+@-webkit-keyframes dash {
+  0% {
+    stroke-dashoffset: 187;
+  }
+  50% {
+    stroke-dashoffset: 46.75;
+    -webkit-transform: rotate(135deg);
+    transform: rotate(135deg);
+  }
+  100% {
+    stroke-dashoffset: 187;
+    -webkit-transform: rotate(450deg);
+    transform: rotate(450deg);
+  }
+}
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 187;
+  }
+  50% {
+    stroke-dashoffset: 46.75;
+    -webkit-transform: rotate(135deg);
+    transform: rotate(135deg);
+  }
+  100% {
+    stroke-dashoffset: 187;
+    -webkit-transform: rotate(450deg);
+    transform: rotate(450deg);
+  }
+}
+/**/
+/*html, body { height: 100%; }
+  
+  body {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+  }
+  
+  $offset: 187;
+  $duration: 1.4s;
+  
+  .spinner {
+    animation: rotator $duration linear infinite;
+  }
+  
+  @keyframes rotator {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(270deg); }
+  }
+  
+  .path {
+    stroke-dasharray: $offset;
+    stroke-dashoffset: 0;
+    transform-origin: center;
+    animation:
+      dash $duration ease-in-out infinite, 
+      colors ($duration*4) ease-in-out infinite;
+  }
+  
+  @keyframes colors {
+      0% { stroke: #4285F4; }
+      25% { stroke: #DE3E35; }
+      50% { stroke: #F7C223; }
+      75% { stroke: #1B9A59; }
+    100% { stroke: #4285F4; }
+  }
+  
+  @keyframes dash {
+   0% { stroke-dashoffset: $offset; }
+   50% {
+     stroke-dashoffset: $offset/4;
+     transform:rotate(135deg);
+   }
+   100% {
+     stroke-dashoffset: $offset;
+     transform:rotate(450deg);
+   }
+  }*/
+/**/

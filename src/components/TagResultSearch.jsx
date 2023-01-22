@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import {
   IonItem,
   IonCard,
@@ -6,11 +7,11 @@ import {
   IonThumbnail,
   IonImg
 } from '@ionic/react'
-const TagResultSearch = ({ data: { title, synopsis, images: { webp } } }) => {
+const TagResultSearch = ({ data: { mal_id, title, synopsis, images: { webp } } }) => {
   return (
     <IonCard>
     <IonCardContent>
-      <IonItem button detail={!0} /* routerLink='/config' */>
+      <IonItem button detail={!0} routerLink={`/anime-search/${mal_id}`}>
         <IonThumbnail slot="start">
           <IonImg {...{ title }} src={webp.small_image_url}></IonImg>
         </IonThumbnail>

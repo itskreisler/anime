@@ -35,8 +35,8 @@ const PageTemplate = () => {
   )
   // const coverDefault = process.env.PUBLIC_URL + '/assets/icon/favicon.png'
   return (
-    <TagLayout>
-      <TagHeaderWithMenuBtn />
+    <TagLayout >
+      <TagHeaderWithMenuBtn title='Calendario' />
       <IonGrid>
         <IonRow
           className="ion-align-items-center"
