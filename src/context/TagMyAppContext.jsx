@@ -1,18 +1,18 @@
 import PropTypes from 'prop-types'
 import React, { useContext, createContext } from 'react'
+import { useLocalStorage } from '../hooks/use-local-storage'
 
 const MyApp = createContext({
-  myApp: {
-    name: 'kreisler'
-  }
+  myApp: { myAnimelist: [], setMyAnimeList: () => {} }
 })
 
 const TagMyAppContext = ({ children }) => {
+  const [myAnimelist, setMyAnimeList] = useLocalStorage('myApp:myAnimelist', [])
   return (
 
     <MyApp.Provider
       value={{
-        myApp: { name: 'kreisler' }
+        myApp: { myAnimelist, setMyAnimeList }
       }}
     >
       {children}
@@ -25,5 +25,5 @@ TagMyAppContext.propTypes = {
 TagMyAppContext.defaultProps = {
   children: <></>
 }
-export const useAboutMeContext = () => useContext(MyApp)
+export const useAppContext = () => useContext(MyApp)
 export default TagMyAppContext

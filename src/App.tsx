@@ -27,6 +27,7 @@ import '@ionic/react/css/display.css'
 
 /* Theme variables */
 import './theme/variables.scss'
+import TagMyAppContext from './context/TagMyAppContext'
 
 setupIonicReact()
 
@@ -35,10 +36,12 @@ const App: React.FC = () => {
     <IonApp>
       <IonRouter>
         <IonSplitPane contentId="main">
+          <TagMyAppContext>
           <Menu />
           <IonRouterOutlet id="main">
             <TagAppPages />
           </IonRouterOutlet>
+          </TagMyAppContext>
         </IonSplitPane>
       </IonRouter>
     </IonApp>

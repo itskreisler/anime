@@ -8,16 +8,25 @@ import {
   IonCardContent,
   IonCardHeader,
   IonCardSubtitle,
-  IonCardTitle, IonText, IonChip
+  IonCardTitle, IonText, IonChip, IonFab,
+  IonFabButton,
+  IonIcon
 } from '@ionic/react'
+import { heartSharp } from 'ionicons/icons'
 import { useLocalStorage } from '../hooks/use-local-storage'
 import { TagHeaderWithBackBtn } from '../components/TagHeader'
+import { useAppContext } from '../context/TagMyAppContext'
 
 const Page = () => {
   const { id } = useParams()
   const [info] = useLocalStorage('PageInicio:info', [])
   const data = info.find((_) => _.mal_id === parseInt(id))
+  const { myApp: { setMyAnimeList } } = useAppContext()
   if (info.length === 0) return <>Error</>
+
+  const handleSaveAnime = () => {
+    setMyAnimeList(_ => [..._, id])
+  }
   return (
     <TagLayout header={<TagHeaderWithBackBtn title={data.title}/>}>
       <IonGrid>
@@ -82,6 +91,15 @@ const Page = () => {
           </IonCol>
         </IonRow>
       </IonGrid>
+      <IonFab vertical="bottom" horizontal="end" slot="fixed">
+        <IonFabButton
+          onClick={handleSaveAnime}
+          color={'dark'}
+          size="small"
+        >
+          <IonIcon icon={heartSharp} size="large" color='danger' />
+        </IonFabButton>
+      </IonFab>
     </TagLayout>
   )
 }
