@@ -7,7 +7,8 @@ import {
   IonInput,
   IonSpinner,
   IonCard,
-  IonCardContent
+  IonCardContent,
+  IonText
 } from '@ionic/react'
 import { TagHeaderWithMenuBtn } from '../components/TagHeader'
 import TagLayout from '../components/TagLayout'
@@ -22,12 +23,14 @@ const PageInicio = () => {
   const { register, handleSubmit, watch } = useHookForm()
   const [isSearch, setIsSearch] = useState(!1)
   const [info, setInfo] = useLocalStorage('PageInicio:info', [])
+  const [notFound, setNotFound] = useState(false)
   const [query, setQuery] = useState('')
   const formAnime = async (data) => {
     setIsSearch(!0)
     try {
       const res = await getAnimeSearch(data)
-      console.log(res)
+      // console.log(res)
+      setNotFound(!res.data.length)
       setInfo(res.data)
     } catch (error) {
     } finally {
@@ -74,7 +77,12 @@ const PageInicio = () => {
       <IonGrid>
         <IonRow>
           <IonCol>
-            {!!query &&
+            {notFound && <IonCard>
+              <IonCardContent>
+<IonText color={'dark'}>Upss.. no pude encontrar lo que buscas, intenta agregarlo manualmente.</IonText>
+              </IonCardContent>
+              </IonCard>}
+            {!notFound &&
               info.map((_, i) => <TagResultSearch key={i} data={_} />)}
           </IonCol>
         </IonRow>

@@ -8,7 +8,7 @@ import {
   IonCardContent,
   IonCardHeader,
   IonCardSubtitle,
-  IonCardTitle, IonText, IonChip, IonFab,
+  IonCardTitle, IonText, IonChip, IonFab, IonNote,
   IonFabButton,
   IonIcon
 } from '@ionic/react'
@@ -16,19 +16,26 @@ import { heartSharp } from 'ionicons/icons'
 import { useLocalStorage } from '../hooks/use-local-storage'
 import { TagHeaderWithBackBtn } from '../components/TagHeader'
 import { useAppContext } from '../context/TagMyAppContext'
+import { PATHS } from './TagAppPages'
 
 const Page = () => {
   const { id } = useParams()
   const [info] = useLocalStorage('PageInicio:info', [])
   const data = info.find((_) => _.mal_id === parseInt(id))
   const { myApp: { setMyAnimeList } } = useAppContext()
-  if (info.length === 0) return <>Error</>
+  if (info.length === 0 || typeof data === 'undefined') {
+    return (
+      <TagLayout header={<TagHeaderWithBackBtn title='404' url={PATHS.URL_DEFAULT.path} />}>
+
+      </TagLayout>
+    )
+  }
 
   const handleSaveAnime = () => {
     setMyAnimeList(_ => [..._, id])
   }
   return (
-    <TagLayout header={<TagHeaderWithBackBtn title={data.title}/>}>
+    <TagLayout header={<TagHeaderWithBackBtn title={data.title} url={PATHS.URL_DEFAULT.path} />}>
       <IonGrid>
         <IonRow className="justify-content-center">
           <IonCol sizeLg="12">
@@ -69,13 +76,41 @@ const Page = () => {
           <IonCol pushLg="4" size="12" sizeLg="8">
             <IonCard>
               <IonCardContent>
-              <p style={{ textAlign: 'justify' }}>
-              <strong>Sinópsis:</strong> {data.synopsis}
-            </p>
+                <p style={{ textAlign: 'justify' }}>
+                  <strong>Sinópsis:</strong> {data.synopsis}
+                </p>
               </IonCardContent>
             </IonCard>
           </IonCol>
           <IonCol pullLg="8" size="12" sizeLg="4">
+            <IonCard>
+              <IonCardContent>
+                <TagItemListLeft title='Format:' text={data.type} />
+                <TagItemListLeft title='Episodes:' text={data.episodes} />
+                <TagItemListLeft title='Episode Duration:' text={data.duration} />
+                <TagItemListLeft title='Status:' text={data.status} />
+
+                <IonText>
+
+                  Start Date:
+                  End Date:
+                  Season:
+                  Average Score:
+                  Mean Score:
+                  Popularity:
+                  Favorites:
+                  Studios:
+                  Producers:
+                  Source:
+                  Hashtag:
+                  Genres:
+                  Romaji:
+                  English:
+                  Native:
+                  Synonyms:
+                </IonText>
+              </IonCardContent>
+            </IonCard>
             <IonCard>
               <IonCardContent>Animación</IonCardContent>
             </IonCard>
@@ -101,6 +136,20 @@ const Page = () => {
         </IonFabButton>
       </IonFab>
     </TagLayout>
+  )
+}
+const TagItemListLeft = ({ title = 'placeholder', text = 'placeholder' }) => {
+  return (
+    <div style={{ paddingBottom: '14px' }}>
+      <div>
+        <IonText color={'dark'}>
+          {title}
+        </IonText>
+      </div>
+      <div>
+        <IonNote>{text}</IonNote>
+      </div>
+    </div>
   )
 }
 

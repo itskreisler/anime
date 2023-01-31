@@ -15,10 +15,12 @@ import React from 'react'
 import { useDarkMode } from '../hooks/use-dark-mode'
 import { PATHS } from './TagAppPages'
 import TagLayout from '../components/TagLayout'
+import TagPre from '../components/TagPre'
 import { TagHeaderWithMenuBtn } from '../components/TagHeader'
 import { TagIonCardHeader } from '../components/TagIonCardHeader'
+import { useAppContext } from '../context/TagMyAppContext'
 
-const Config = () => {
+const PageConfig = () => {
   const [darkMode, setDarkMode] = useDarkMode()
   const [tagAlert] = useIonAlert()
   const [tagToast] = useIonToast()
@@ -84,8 +86,13 @@ const Config = () => {
           </IonButton>
         </IonCardContent>
       </IonCard>
+      <IonCard>
+        <IonCardContent>
+          <TagPre value={useAppContext().myApp.myAnimelist} />
+        </IonCardContent>
+      </IonCard>
     </TagLayout>
   )
 }
 
-export default Config
+export default PageConfig
